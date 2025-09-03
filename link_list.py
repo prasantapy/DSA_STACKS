@@ -1,60 +1,79 @@
-class Node:
-
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
-obj1=Node(1)
-obj2=Node(2)
-obj3=Node(3)
-
-obj1.next=obj2
-obj2.next=obj3
-cur=obj1
-while cur:
-    print(cur.data,end='')
-    cur=cur.next
-print('nul')
  #link_list
 class Node:
 
-    def __init__(self, value):
-        self.value = value
-        self.next = None
+    def __init__(self,value):
+        self.value=value
+        self.next=None
 
 
 class Stack:
     def __init__(self):
-        self.head = None
+        self.head=None
+        self.size=0
 
-    def push(self, value):
-        current_stack = Node(value)
-        current_stack.next = self.head
-        self.head = current_stack
+    def push(self,value):
+        current=Node(value)
+        if self.head:
+            current.next=self.head
+
+        self.head=current
+        self.size+=1
 
     def pop(self):
-        if self.head == None:
+        if self.isempty():
             return "empty stack"
-        temp = self.head
-        self.head = self.head.next
+        else:
+            poped=self.head
 
-        return temp.value
+            
+            self.head=self.head.next
+            self.size-=1
+            return poped.value
 
-    def display(self):
-        curr = self.head
 
-        while curr:
-            print(curr.value)
-            curr = curr.next
+    def peek(self):
+        if self.isempty():
+            return "empty stack"
+        else:
+            
+            return self.head.value
+
+    def isempty(self):
+        return self.size ==0
+
+    def Stack_size(self):
+        return self.size
+
+
+    def Display(self):
+        current=self.head
+
+        while current:
+            print(current.value,end="--->")
+            current=current.next
+
         print()
+mystack=Stack()
+mystack.push(10)
+mystack.push(20)
+mystack.push(30)
+mystack.push(40)
 
 
-obj = Stack()
-obj.push(10)
-obj.push(20)
-obj.push(30)
-obj.push(40)
-obj.display()
-print('*' * 4)
-obj.pop()
-obj.display()
+mystack.Display()
+
+
+print('pop',mystack.pop())
+
+print('peek',mystack.peek())
+
+print('is Empty',mystack.isempty())
+
+print('Stack_size',mystack.Stack_size())
+
+
+            
+            
+            
+
+        

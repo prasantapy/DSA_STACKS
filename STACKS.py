@@ -2,7 +2,7 @@ stack=[]
 #push
 stack.append('A')
 stack.append('B')
-stack.append('C')
+stack.append('C') 
 print(stack)
 #peek
 topstacks=stack[-1]
